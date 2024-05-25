@@ -32,55 +32,62 @@ namespace BreakoutGameLab001
         // 加入其他方法
 
         // TODO - 繪製球
+        internal void Draw(Graphics gr)
+        {
+            gr.FillEllipse(new SolidBrush(this.Color),X-Radius,Y-Radius,Radius*2,Radius*2);
+        }
 
         // 移動球
-        public void Move(int Width, int Height)
+        public void Move(int left,int top,int right, int Bottom)
         {
             // TODO - 根據速度更新球的位置
-
+            X += VelocityX;
+            Y += VelocityY;
             //
             // 水平方向: 檢查球是否碰到牆壁
-            if (X - Radius <= 0)
+            if (X - Radius <=left)
             {
                 VelocityX = -VelocityX; // 球反彈
-                X = Radius; // 避免球超出邊界
+                X = left+Radius; // 避免球超出邊界
             }
-            else if (X + Radius >= Width)
+            else if (X + Radius >= right)
             {
                 VelocityX = -VelocityX; // 球反彈
-                X = Width - Radius; // 避免球超出邊界
+                X = right - Radius; // 避免球超出邊界
             }
-
+            
             // TODO: 垂直方向: 檢查球是否碰到牆壁? 下方牆壁==>遊戲結束!
-
+            if (Y - Radius <= top)
+            {
+                VelocityY = -VelocityY; // 球反彈
+                Y = top+Radius; // 避免球超出邊界
+            }
+            else if (Y + Radius >= Bottom)
+            {
+                VelocityY = -VelocityY; // 球反彈
+                Y = Bottom- Radius; // 避免球超出邊界
+            }
         }
 
         // 檢查碰撞事件 : 球是否與任一磚塊或擋板發生碰撞
-        public void CheckCollision(Paddle paddle, Brick[,] bricks)
+        public void CheckCollision(Paddle paddle, List<Brick> bricks)
         {
             // (A) 逐一檢查: 球是否與所有的磚塊發生碰撞
             //     => 磚塊消失, 球反彈!
-            for (int i = 0; i < bricks.GetLength(0); i++)
+            for (int i = bricks.Count - 1; i >= 0; i--)
             {
-                for (int j = 0; j < bricks.GetLength(1); j++)
+                Brick brick = bricks[i];
+                if (X + Radius >= brick.X && X - Radius <= brick.X + brick.Width &&
+                    Y + Radius >= brick.Y && Y - Radius <= brick.Y + brick.Height)
                 {
-                    // 如果磚塊存在
-                    Brick brick = bricks[i, j];
-                    if (brick != null)
-                    {
-                        if (X + Radius >= brick.X && X - Radius <= brick.X + brick.Width &&
-                            Y + Radius >= brick.Y && Y - Radius <= brick.Y + brick.Height)
-                        {
-                            VelocityY = -VelocityY; // 球反彈
-                            // 磚塊消失
-                            bricks[i, j] = null;
+                    VelocityY = -VelocityY; // 球反彈
+                                            // 磚塊消失
+                    bricks.RemoveAt(i);
 
-                            // TODO: 檢查是否所有磚塊都消失 ==> 遊戲結束
+                    // TODO: 檢查是否所有磚塊都消失 ==> 遊戲結束
 
-                            // break : 一次只讓ㄧ個磚塊消失 
-                            break;
-                        }
-                    }
+                    // break : 一次只讓一個磚塊消失 
+                    break;
                 }
             }
 
@@ -99,5 +106,7 @@ namespace BreakoutGameLab001
                     Y = paddle.Y + paddle.Height + Radius + 1;
             }
         }
+
+        
     }
 }

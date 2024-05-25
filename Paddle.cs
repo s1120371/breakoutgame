@@ -20,10 +20,20 @@
             Color = color;
         }
 
+
+
         // 加入其他方法
 
         // 繪製擋板
-
+        internal void Draw(Graphics gr)
+        {
+            gr.FillRectangle(new SolidBrush(Color.DarkGray), X, Y, Width, Height);
+        }
         // TODO: 左右移動擋板
+        public void Move(int vx)
+        {
+            X+=vx;
+        }
+
     }
 }
