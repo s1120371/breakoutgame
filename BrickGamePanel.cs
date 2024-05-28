@@ -62,7 +62,7 @@ namespace BreakoutGameLab001
             if (bricks.Count == 0)
             {
                 timer.Stop();
-                MessageBox.Show("恭喜您完成遊戲！");
+                MessageBox.Show("恭喜你完成遊戲！");
             }
             // 檢查球是否低於擋板，若是則結束遊戲
             foreach (var ball in balls)
@@ -70,7 +70,7 @@ namespace BreakoutGameLab001
                 if (ball.Y + ball.Radius >= paddle.Y + paddle.Height)
                 {
                     timer.Stop();
-                    MessageBox.Show("沒碰到擋板,遊戲結束！");
+                    MessageBox.Show("你沒碰到擋板哦，遊戲結束！");
                     return;
                 }
             }

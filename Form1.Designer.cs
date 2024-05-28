@@ -40,9 +40,9 @@
             panel1.Controls.Add(lblTime);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(6, 6, 6, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1130, 77);
+            panel1.Size = new Size(1758, 122);
             panel1.TabIndex = 0;
             // 
             // lblTime
@@ -52,10 +52,10 @@
             lblTime.AutoSize = true;
             lblTime.Font = new Font("Microsoft JhengHei UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblTime.ForeColor = SystemColors.HotTrack;
-            lblTime.Location = new Point(329, 11);
-            lblTime.Margin = new Padding(4, 0, 4, 0);
+            lblTime.Location = new Point(512, 17);
+            lblTime.Margin = new Padding(6, 0, 6, 0);
             lblTime.Name = "lblTime";
-            lblTime.Size = new Size(304, 50);
+            lblTime.Size = new Size(487, 81);
             lblTime.TabIndex = 0;
             lblTime.Text = "經過時間: XX 秒";
             lblTime.TextAlign = ContentAlignment.MiddleCenter;
@@ -65,22 +65,22 @@
             panel2.BackColor = SystemColors.ControlDark;
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(4, 4, 4, 4);
+            panel2.Margin = new Padding(6, 6, 6, 6);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1130, 624);
+            panel2.Size = new Size(1758, 985);
             panel2.TabIndex = 1;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(9F, 19F);
+            AutoScaleDimensions = new SizeF(14F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1130, 624);
+            ClientSize = new Size(1758, 985);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Breakout Game, by 陳玥如 411203699";
+            Text = "Breakout Game, by 411203712 陳郁潔";
             KeyDown += Form1_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
